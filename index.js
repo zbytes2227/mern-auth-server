@@ -41,13 +41,13 @@ app.get("/", async (req, res) => {
 
 
 // Handle requests to the dashboard rou
-app.post("/dashboard", async (req, res) => {
+app.post("/api/dashboard", async (req, res) => {
   const isAuthenticated = await auth(req, res);
   res.json({ user_valid: isAuthenticated.verified });
 });
 
 // Handle requests to the user route
-app.post("/user", async (req, res) => {
+app.post("/api/user", async (req, res) => {
   const isAuthenticated = await auth(req, res);
   if (isAuthenticated.verified) {
     let user = await User.findOne({ _id: isAuthenticated.decoded._id });
